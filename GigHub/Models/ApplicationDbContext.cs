@@ -9,6 +9,9 @@ namespace GigHub.Models
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Following> Followings { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<UserNotification> UserNotifications { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -24,7 +27,7 @@ namespace GigHub.Models
            
             modelBuilder.Entity<Attendance>()
                 .HasRequired(a => a.Gig)
-                .WithMany()
+                .WithMany(g=>g.Attendances)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()
@@ -36,6 +39,11 @@ namespace GigHub.Models
               .HasMany(a => a.Followees)
               .WithRequired(a => a.Follower)
               .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<UserNotification>()
+             .HasRequired(a => a.User)
+             .WithMany(u =>u.UserNotifications)
+             .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
         }
