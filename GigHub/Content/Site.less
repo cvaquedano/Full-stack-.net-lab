@@ -47,6 +47,10 @@ span.field-validation-error {
 }
 
 /*bootstrap overrides*/
+
+.popover {
+    box-shadow:none;
+}
 .navbar-inverse {
     background-color: #ff4342;
     border-color: #ff4342;
@@ -56,12 +60,12 @@ span.field-validation-error {
         position:relative;
     }
 
-    .navbar-inverse .notification badge{
-        position: absolute;
-        top:8px;
-        right:0;
-        background:#a80a0a;
-    }
+        .navbar-inverse .notification .badge {
+            position: absolute;
+            top: 8px;
+            right: 0;
+            background: #a80a0a;
+        }
 
     .navbar-inverse .navbar-nav > li > a {
         color: #FFf;
@@ -188,3 +192,28 @@ h6,
    .gigs > li:hover .actions{
        display:block;
    }
+
+
+   .popover-notifications .popover-content{
+       padding:0;
+   }
+
+ul.notification {
+    list-style: none;
+    padding-left: 0;
+}
+
+   /* ">" inmidialy belog yo*/
+ul.notification > li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+ul.notification > li:last-child {
+    border-bottom: none;
+}
+
+    ul.notification .highlight{
+        font-weight: bold;
+
+    }
