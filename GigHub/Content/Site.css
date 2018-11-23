@@ -217,3 +217,7 @@ ul.notification > li:last-child {
         font-weight: bold;
 
     }
+
+#searchGigs {
+    width: 300px;
+}
