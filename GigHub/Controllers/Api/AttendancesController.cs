@@ -38,5 +38,21 @@ namespace GigHub.Controllers.Api
 
             return Ok();
         }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteAttendance(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var attendace = _context.Attendances
+                .SingleOrDefault(a => a.AttendeeId == userId && a.GigId == id);
+
+            if (attendace == null)
+                return NotFound();
+
+            _context.Attendances.Remove(attendace);
+            _context.SaveChanges();
+
+            return Ok(id);
+        }
     }
 }
