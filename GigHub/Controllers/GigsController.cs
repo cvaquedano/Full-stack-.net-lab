@@ -131,7 +131,7 @@ namespace GigHub.Controllers
 
             var viewModel = new GigFormViewModel
             {
-                Genres = _context.Genre.ToList(),
+                Genres = _unitOfWork.Genres.GetGenres(),
                 Date = gig.DateTime.ToString("d MMM yyyy"),
                 Time = gig.DateTime.ToString("HH:mm"),
                 Genre = gig.GenreId,
