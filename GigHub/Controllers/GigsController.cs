@@ -1,11 +1,8 @@
-﻿using GigHub.Models;
+﻿using GigHub.Core;
+using GigHub.Core.Models;
+using GigHub.Core.ViewModels;
 using GigHub.Persistence;
-using GigHub.Repositories;
-using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -137,7 +134,7 @@ namespace GigHub.Controllers
                 Genre = gig.GenreId,
                 Venue = gig.Venue,
                 Heading = "Edit a Gig",
-                id = gig.Id
+                Id = gig.Id
             };
 
             return View("GigForm",viewModel);
@@ -154,7 +151,7 @@ namespace GigHub.Controllers
                 return View("GigForm", viewModel);
             }
 
-            var gig = _unitOfWork.Gigs.GetGigWithAttendees(viewModel.id);
+            var gig = _unitOfWork.Gigs.GetGigWithAttendees(viewModel.Id);
 
             if (gig == null)
                 return HttpNotFound();
